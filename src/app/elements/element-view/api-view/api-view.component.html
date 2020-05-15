@@ -1,0 +1,43 @@
+<inc-container *ngIf="incElement">
+  <div *ngFor="let module of incElement.modules">
+    <div class="ion-padding-bottom">
+      <ion-text *ngIf="module.name && module.name.split('Module') as _module">
+        <h4>Inclouded {{'API_REFERENCE' | translate}} {{_module[0]}} {{'MODULE' | translate}}</h4>
+      </ion-text>
+      <ion-text *ngIf="module.importFrom">
+        <b>{{'import { '}}<span>{{module.name}}</span>{{" } from '"}}<span>{{module.importFrom}}</span>{{"';"}}</b>
+      </ion-text>
+    </div>
+    <div class="ion-padding-bottom" *ngFor="let component of module.components">
+      <ng-container *ngIf="component.name && component.name.split('Component') as _component">
+        <ion-text><h2>{{_component[0]}} {{'COMPONENT' | translate}}</h2></ion-text>
+        <ion-text>
+          <p>
+            {{'EXPORTED_AS' | translate}}: <span>{{component.name}}</span>
+          </p>
+          <p *ngIf="component.selector">
+            {{'SELECTOR' | translate}}: <span>{{component.selector}}</span>
+          </p>
+        </ion-text>
+      </ng-container>
+      <ion-card *ngIf="component.properties">
+        <div class="card-header">
+          <ion-item>
+            <ion-text lines="none"><b>{{'NAME' | translate}}</b></ion-text>
+          </ion-item>
+          <ion-item>
+            <ion-text><b>{{'DESCRIPTION' | translate}}</b></ion-text>
+          </ion-item>
+        </div>
+        <div class="card-content" *ngFor="let property of component.properties">
+          <ion-item *ngIf="property.name && property.name.split(':') as _property">
+            <ion-text>{{_property.length > 1 ? _property[0] + ':' : _property[0]}}<span *ngIf="_property.length > 1">{{_property[1]}}</span></ion-text>
+          </ion-item>
+          <ion-item>
+            <ion-text>{{property.description}}</ion-text>
+          </ion-item>
+        </div>
+      </ion-card>
+    </div>
+  </div>
+</inc-container>

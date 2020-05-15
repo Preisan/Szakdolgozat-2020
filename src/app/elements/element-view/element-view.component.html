@@ -1,0 +1,33 @@
+<ion-content>
+  <ion-button class="back-btn" fill="clear" (click)="navigateTo('/elements/element-select')">
+    <ion-icon slot="start" name="arrow-back"></ion-icon> {{'ELEMENT_SELECT' | translate}}
+  </ion-button>
+    <mat-tab-group mat-align-tabs="center" class="pat-details-tabs" *ngIf="incElement">
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <span class="ion-text-capitalize">{{'OVERVIEW' | translate}}</span>
+        </ng-template>
+        <ng-template matTabContent>
+          <lib-overview-view [incElement]="incElement"></lib-overview-view>
+        </ng-template>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <span class="ion-text-capitalize">Api</span>
+        </ng-template>
+        <ng-template matTabContent>
+          <lib-api-view [incElement]="incElement"></lib-api-view>
+        </ng-template>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <span class="ion-text-capitalize">{{'EXAMPLES' | translate}}</span>
+        </ng-template>
+        <ng-template matTabContent>
+          <lib-examples-view [incElement]="incElement"></lib-examples-view>
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
+  </ion-content>
+  
+  

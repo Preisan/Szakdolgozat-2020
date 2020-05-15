@@ -1,0 +1,111 @@
+<inc-container>
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <ng-container formArrayName="modules">
+      <ion-card *ngFor="let module of form.controls.modules.controls; let i = index" [formGroupName]="i">
+        <div class="module">
+          <ion-item>
+            <ion-label position="floating">
+              {{'MODULE' | translate}} {{'NAME2' | translate}}
+              <ion-text color="danger">*</ion-text>
+            </ion-label>
+            <ion-input formControlName="name"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">
+              {{'IMPORT_FROM' | translate}}
+            </ion-label>
+            <ion-input formControlName="importFrom"></ion-input>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-buttons>
+              <ion-button mat-button [matMenuTriggerFor]="menuM">
+                <ion-icon slot="icon-only" name="more"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+            <mat-menu #menuM="matMenu" xPosition="before">
+              <button class="menuItem" mat-menu-item
+                (click)="addModule(direction_E.up)">{{'ADD_UP' | translate}}</button>
+              <button class="menuItem" mat-menu-item
+                (click)="addModule(direction_E.down)">{{'ADD_DOWN' | translate}}</button>
+              <button class="menuItem" mat-menu-item
+                (click)="addComponent(direction_E.down, i)"><b>{{'NEW' | translate}} {{'COMPONENT' | translate}}</b></button>
+              <button class="menuItem" mat-menu-item (click)="deleteModule(i)"><b class="red-color">{{'DELETE2' | translate}}</b></button>
+            </mat-menu>
+          </ion-item>
+        </div>
+        <ng-container formArrayName="components">
+          <ng-container *ngFor="let component of module.controls.components.controls; let j = index" [formGroupName]="j">
+            <div class="component">
+              <ion-item>
+                <ion-label position="floating">
+                  &nbsp;&nbsp;&nbsp;{{'COMPONENT' | translate}} {{'NAME2' | translate}}
+                  <ion-text color="danger">*</ion-text>
+                </ion-label>
+                <ion-input formControlName="name"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">
+                  &nbsp;&nbsp;&nbsp;{{'SELECTOR' | translate}}
+                </ion-label>
+                <ion-input formControlName="selector"></ion-input>
+              </ion-item>
+              <ion-item lines="none">
+                <ion-buttons>
+                  <ion-button mat-button [matMenuTriggerFor]="menuC">
+                    <ion-icon slot="icon-only" name="more"></ion-icon>
+                  </ion-button>
+                </ion-buttons>
+                <mat-menu #menuC="matMenu" xPosition="before">
+                  <button class="menuItem" mat-menu-item
+                    (click)="addComponent(direction_E.up, i)">{{'ADD_UP' | translate}}</button>
+                  <button class="menuItem" mat-menu-item
+                    (click)="addComponent(direction_E.down, i)">{{'ADD_DOWN' | translate}}</button>
+                  <button class="menuItem" mat-menu-item
+                    (click)="addProperty(direction_E.down, i, j)"><b>{{'NEW' | translate}} {{'PROPERTY' | translate}}</b></button>
+                  <button class="menuItem" mat-menu-item
+                    (click)="deleteComponent(i, j)"><b class="red-color">{{'DELETE2' | translate}}</b></button>
+                </mat-menu>
+              </ion-item>
+            </div>
+            <ng-container formArrayName="properties">
+              <ng-container *ngFor="let property of component.controls.properties.controls; let k = index" [formGroupName]="k">
+                <div class="property">
+                  <ion-item>
+                    <ion-label position="floating">
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{'PROPERTY' | translate}} {{'NAME2' | translate}}
+                      <ion-text color="danger">*</ion-text>
+                    </ion-label>
+                    <ion-input formControlName="name"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label position="floating">
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{'DESCRIPTION' | translate}}
+                    </ion-label>
+                    <ion-input formControlName="description"></ion-input>
+                  </ion-item>
+                  <ion-item lines="none">
+                    <ion-buttons>
+                      <ion-button mat-button [matMenuTriggerFor]="menuP">
+                        <ion-icon slot="icon-only" name="more"></ion-icon>
+                      </ion-button>
+                    </ion-buttons>
+                    <mat-menu #menuP="matMenu" xPosition="before">
+                      <button class="menuItem" mat-menu-item
+                        (click)="addProperty(direction_E.up, i, j)">{{'ADD_UP' | translate}}</button>
+                      <button class="menuItem" mat-menu-item
+                        (click)="addProperty(direction_E.down, i, j)">{{'ADD_DOWN' | translate}}</button>
+                      <button class="menuItem" mat-menu-item
+                        (click)="deleteProperty(i, j, k)"><b class="red-color">{{'DELETE2' | translate}}</b></button>
+                    </mat-menu>
+                  </ion-item>
+                </div>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+        </ng-container>
+      </ion-card>
+    </ng-container>
+    <br>
+    <ion-button [disabled]="form.invalid" type="submit" expand="block">{{'SAVE' | translate}}</ion-button>
+  </form>
+</inc-container>

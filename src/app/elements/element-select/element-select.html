@@ -1,0 +1,22 @@
+<ion-content>
+  <inc-container *ngIf="incElements">
+    <ion-grid>
+      <ion-row>
+        <ion-col size-md="6" size="12" *ngFor="let element of incElements; let i = index">
+          <ion-card (click)="navigateToView(i, router)">
+            <div class="card-header">
+              <ion-item lines="none">
+                <ion-text><b>{{element.name}}</b></ion-text>
+              </ion-item>
+            </div>
+            <div class="card-content">
+              <ion-item lines="none">
+                <ion-text *ngIf="element.description">{{element.description}}</ion-text>
+              </ion-item>
+            </div>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </inc-container>
+</ion-content>

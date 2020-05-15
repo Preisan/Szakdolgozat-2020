@@ -1,0 +1,12 @@
+.element-base {
+    display: flex;
+    ion-item {
+        width: 30%;
+    }
+    ion-item:nth-child(2) {
+        width: 55%;
+    }
+    ion-item:nth-child(3) {
+        width: 15%;
+    }
+}

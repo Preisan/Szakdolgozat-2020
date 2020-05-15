@@ -1,0 +1,36 @@
+<inc-container>
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <ng-container *ngIf="isElements" formArrayName="modules">
+      <div *ngFor="let module of form.controls.modules.controls; let i = index" [formGroupName]="i">
+        <ng-container formArrayName="components">
+          <ion-card *ngFor="let component of module.controls.components.controls; let j = index" [formGroupName]="j">
+            <div formGroupName="example">
+              <div class="card-header">
+                <ion-item lines="none">
+                  <ion-text><span>{{'COMPONENT' | translate}}: </span> {{incElement.modules[i].components[j].name}}</ion-text>
+                </ion-item>
+                <ion-item lines="none">
+                  <ion-text><span>{{'MODULE' | translate}}: </span> {{incElement.modules[i].name}}</ion-text>
+                </ion-item>
+              </div>
+              <ion-item>
+                <ion-label position="floating">Html</ion-label>
+                <ion-textarea formControlName="html" rows="10" auto-grow="true"></ion-textarea>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">TS</ion-label>
+                <ion-textarea formControlName="ts" rows="10" auto-grow="true"></ion-textarea>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Css</ion-label>
+                <ion-textarea formControlName="css" rows="10" auto-grow="true"></ion-textarea>
+              </ion-item>
+            </div>
+          </ion-card>
+        </ng-container>
+      </div>
+      <br>
+      <ion-button [disabled]="form.invalid" type="submit" expand="block">{{'SAVE' | translate}}</ion-button>
+    </ng-container>
+  </form>
+</inc-container>

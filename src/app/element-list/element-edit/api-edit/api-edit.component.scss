@@ -1,0 +1,31 @@
+.module, .component, .property {
+    display: flex;
+    ion-item {
+
+        width: 45%;
+    }
+    ion-item:first-child, ion-item:nth-child(2) {
+        border-right: 1px solid lightgrey; 
+    }
+    ion-item:nth-child(3) {
+        width: 10%;
+    }
+}
+
+.module {
+    ion-label {
+        color: var(--ion-color-danger);
+    }
+}
+
+.component {
+    ion-label {
+        color: orange;
+    }
+}
+
+.property {
+    ion-label {
+        color: green;
+    }
+}

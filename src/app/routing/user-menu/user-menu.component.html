@@ -1,0 +1,11 @@
+<ion-list lines="none">
+  <ion-menu-toggle auto-hide="false" *ngFor="let userLink of userLinks">
+    <ion-item [id]="userLink.id" [routerDirection]="'root'" [routerLink]="userLink.url" [disabled]="userLink.disabled"
+      (click)="checkClick(userLink)()">
+      <ion-icon slot="start" [name]="userLink.icon"></ion-icon>
+      <ion-label>
+        {{userLink.label | translate}}
+      </ion-label>
+    </ion-item>
+  </ion-menu-toggle>
+</ion-list>

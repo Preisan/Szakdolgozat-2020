@@ -1,0 +1,14 @@
+<ion-content>
+  <ion-header>
+    <ion-toolbar color="danger" class="ion-text-center">
+      <ion-title>{{'INCLOUDED_LIBRARY_MATERIAL' | translate}}</ion-title>
+      <h2>{{'MATERIAL_DESING_ELEMENTS' | translate}}</h2>
+    </ion-toolbar>
+  </ion-header>
+  <inc-container *ngIf="!loading && subjects">
+    <div *ngFor="let subject of subjects" class="ion-padding-bottom">
+      <ion-text><h2>{{subject.title}}</h2></ion-text>
+      <ion-text *ngIf="subject.text">{{subject.text}}</ion-text>
+    </div>
+  </inc-container>
+</ion-content>

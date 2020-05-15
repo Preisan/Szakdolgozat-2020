@@ -1,0 +1,37 @@
+<inc-container *ngIf="incElement">
+  <div *ngFor="let module of incElement.modules; let i = index">
+    <div *ngFor="let component of module.components; let j = index">
+      <ion-card *ngIf="component.example" (click)="openCard(i, j)">
+        <div class="card-header">
+          <ion-item lines="none">
+            <ion-text *ngIf="component.name && component.name.split('Component') as _component">
+              {{_component[0]}} <span>{{'COMPONENT' | translate}}</span>
+            </ion-text>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-text *ngIf="module.name && module.name.split('Module') as _module">
+              {{_module[0]}} <span>{{'MODULE' | translate}}</span>
+            </ion-text>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-icon name="code" color="primary"></ion-icon>
+          </ion-item>
+        </div>
+        <div *ngIf="isOpen[i] && isOpen[i][j]">
+          <ion-item *ngIf="component.example.html">
+            <ion-label position="floating">Html</ion-label>
+            <ion-textarea readonly auto-grow="true" value="{{component.example.html}}"></ion-textarea>
+          </ion-item>
+          <ion-item *ngIf="component.example.ts">
+            <ion-label position="floating">TS</ion-label>
+            <ion-textarea readonly auto-grow="true" value="{{component.example.ts}}"></ion-textarea>
+          </ion-item>
+          <ion-item *ngIf="component.example.css">
+            <ion-label position="floating">Css</ion-label>
+            <ion-textarea readonly auto-grow="true" value="{{component.example.css}}"></ion-textarea>
+          </ion-item>
+        </div>
+      </ion-card>
+    </div>
+  </div>
+</inc-container>

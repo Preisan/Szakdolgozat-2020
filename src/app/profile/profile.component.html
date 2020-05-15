@@ -1,0 +1,18 @@
+<inc-container>
+  <ion-card class="ion-padding ion-no-margin">
+    <ion-text color="danger" class="ion-text-uppercase ion-padding" style="padding-bottom: 0;">
+      <b>{{'SECURITY_LOGIN' | translate}}</b>
+    </ion-text>
+    <inc-fire-user></inc-fire-user>
+    <ion-item-divider class="ion-margin-bottom"></ion-item-divider>
+    <ion-text color="danger" class="ion-text-uppercase ion-padding" style="padding-bottom: 0;">
+      <b>{{'USER_DATAS' | translate}}</b>
+    </ion-text>
+    <ion-list lines="none" class="ion-padding-start">
+      <ion-item button id="emailTag" (click)="openModal('name')">
+        <ion-label>{{'NAME' | translate}}</ion-label>
+        <ion-label *ngIf="user.displayName"><b>{{user.displayName}}</b></ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+</inc-container>

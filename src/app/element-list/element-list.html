@@ -1,0 +1,40 @@
+<ion-content>
+  <inc-container *ngIf="!loading">
+    <div class="ion-padding-bottom">
+      <ion-button expand="block" (click)="openModal('elementAdd')">
+        <ion-icon slot="start" name="add"></ion-icon>
+        {{'ELEMENT' | translate}}
+      </ion-button>
+    </div>
+
+    <ion-card *ngFor="let element of incElements; let i = index">
+      <div class="element-base">
+        <ion-item lines="none" (click)="navigateTo('/element-edit', element)">
+          <ion-text>
+            <b>{{element.name}}</b>
+          </ion-text>
+        </ion-item>
+        <ion-item lines="none" (click)="navigateTo('/element-edit', element)">
+          <ion-text>
+            <span *ngIf="element.description">{{element.description}}</span>
+          </ion-text>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-buttons>
+            <ion-button (click)="visibility(i)">
+              <ion-checkbox [checked]="element.isVisible"></ion-checkbox>
+              <ion-icon slot="icon-only" style="display: none;"></ion-icon>
+            </ion-button>
+            <ion-button mat-button [matMenuTriggerFor]="menu">
+                <ion-icon slot="icon-only" name="more"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+          <mat-menu #menu="matMenu" xPosition="before">
+              <button class="menuItem" mat-menu-item (click)="openModal('elementAdd', i)"><b>{{'EDIT2' | translate}}</b></button>
+              <button class="menuItem" mat-menu-item (click)="presentDelete(i)"><b class="red-color">{{'DELETE2' | translate}}</b></button>
+          </mat-menu>
+      </ion-item>
+      </div>
+    </ion-card>
+  </inc-container>
+</ion-content>

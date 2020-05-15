@@ -1,0 +1,25 @@
+<ion-split-pane contentId="main">
+    <ion-menu contentId="main">
+      <ion-content>
+        <ion-list lines="none">
+          <ion-item *ngIf="navTitle">
+            <ion-label class="inc-nav-title ion-text-center">
+              {{navTitle | translate}}
+            </ion-label>
+          </ion-item>
+        </ion-list>
+        <span *ngIf="incElements">
+          <ion-menu-toggle auto-hide="false">
+            <ion-item *ngFor="let element of incElements | incNavShowPipe; let i = index" lines="none"
+              ngClass="{{isSelected[i] ? 'inc-active-link' : ''}}" (click)="navigateToView(i, router)">
+            <ion-icon slot="start" name="code"></ion-icon>
+            <ion-label>
+              {{element.name | translate}}
+            </ion-label>
+          </ion-item>
+          </ion-menu-toggle>
+        </span>
+      </ion-content>
+    </ion-menu>
+  <ion-router-outlet id="main"></ion-router-outlet>
+</ion-split-pane>

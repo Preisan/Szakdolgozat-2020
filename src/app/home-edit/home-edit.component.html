@@ -1,0 +1,32 @@
+<ion-content>
+  <inc-container>
+    <form [formGroup]="form" (ngSubmit)="save()">
+      <ng-container formArrayName="home" *ngIf="!loading">
+        <ion-card *ngFor="let home of form.controls.home.controls; let i = index" [formGroupName]="i">
+          <ion-item>
+            <ion-label position="floating">{{'TITLE' | translate}}</ion-label>
+            <ion-input formControlName="title"></ion-input>
+            <ion-buttons>
+              <ion-button mat-button [matMenuTriggerFor]="menu">
+                <ion-icon slot="icon-only" name="more"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button class="menuItem" mat-menu-item
+                (click)="addSubject(direction_E.up)">{{'ADD_UP' | translate}}</button>
+              <button class="menuItem" mat-menu-item
+                (click)="addSubject(direction_E.down)">{{'ADD_DOWN' | translate}}</button>
+              <button class="menuItem" mat-menu-item (click)="deleteSubject(i)"><b class="red-color">{{'DELETE2' | translate}}</b></button>
+            </mat-menu>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">{{'TEXT' | translate}}</ion-label>
+            <ion-textarea formControlName="text" rows="10" auto-grow="true"></ion-textarea>
+          </ion-item>
+        </ion-card>
+      </ng-container>
+      <br>
+      <ion-button [disabled]="form.invalid" type="submit" expand="block">{{'SAVE' | translate}}</ion-button>
+    </form>
+  </inc-container>
+</ion-content>

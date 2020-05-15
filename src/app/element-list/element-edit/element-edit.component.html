@@ -1,0 +1,32 @@
+<ion-content *ngIf="!loading">
+  <ion-button class="back-btn" fill="clear" (click)="navigateTo('/element-list')">
+    <ion-icon slot="start" name="arrow-back"></ion-icon> {{'ELEMENT_LIST' | translate}}
+  </ion-button>
+  <mat-tab-group mat-align-tabs="center" class="pat-details-tabs">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <span class="ion-text-capitalize">{{'OVERVIEW' | translate}}</span>
+      </ng-template>
+      <ng-template matTabContent>
+        <lib-overview-edit [incElement]="incElement" (data)="set($event)"></lib-overview-edit>
+      </ng-template>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <span class="ion-text-capitalize">Api</span>
+      </ng-template>
+      <ng-template matTabContent>
+        <lib-api-edit [incElement]="incElement" (data)="set($event)"></lib-api-edit>
+      </ng-template>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <span class="ion-text-capitalize">{{'EXAMPLES' | translate}}</span>
+      </ng-template>
+      <ng-template matTabContent>
+        <lib-examples-edit [incElement]="incElement" (data)="set($event)" (noApi)="changeTab($event)"></lib-examples-edit>
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>
+</ion-content>
+

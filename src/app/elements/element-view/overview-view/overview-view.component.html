@@ -1,0 +1,10 @@
+<inc-container *ngIf="incElement">
+  <ion-text class="ion-text-center">
+    <h1 class="name">{{incElement.name}}</h1>
+    <h2 class="description" *ngIf="incElement.description">{{incElement.description}}</h2>
+  </ion-text>
+  <div *ngFor="let overview of incElement.overview" class="ion-padding-bottom">
+    <ion-text><h2>{{overview.title}}</h2></ion-text>
+    <ion-text *ngIf="overview.text">{{overview.text}}</ion-text>
+  </div>
+</inc-container>

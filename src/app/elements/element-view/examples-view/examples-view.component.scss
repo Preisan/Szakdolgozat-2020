@@ -1,0 +1,24 @@
+.card-header {
+    display: flex;
+    ion-item {
+        width: 40%;
+        span {
+            color: orange;
+        }
+    }
+    ion-item:nth-child(2) {
+        width: 53%;
+        span {
+            color: var(--ion-color-danger);
+        }
+    }
+    ion-item:last-child {
+        width: 7%;
+    }
+}
+
+ion-item {
+    ion-label {
+        color: dodgerblue;
+    }
+}

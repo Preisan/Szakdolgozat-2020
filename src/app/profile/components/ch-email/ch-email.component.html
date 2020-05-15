@@ -1,0 +1,41 @@
+<ion-content>
+  <ion-button class="back-btn" fill="clear" (click)="navigateTo('/profile')">
+    <ion-icon slot="start" name="arrow-back"></ion-icon> {{'PROFILE' | translate}}
+  </ion-button>
+  <inc-container>
+    <ion-card class="ion-padding">
+      <div *ngIf="mustLoginAgain" class="ion-text-center">
+        <h5>{{'NEED_LOGIN_E' | translate}}</h5>
+        <ion-button id="login-forpw" [routerLink]="['/login', currentRoute]">{{'LOGIN' | translate}}
+        </ion-button>
+      </div>
+      <span *ngIf="!mustLoginAgain">
+        <form [formGroup]="form" (ngSubmit)="emailAlert()">
+          <ion-list>
+            <ion-text>
+              <h5>{{'EDIT_EMAIL' | translate}}</h5>
+            </ion-text>
+            <ion-item>
+              <ion-label position="floating">{{'EMAIL' | translate}}
+                <span class="required">*</span>
+              </ion-label>
+              <ion-input id="emailChange" autofocus formControlName="email" type="email" name="email" clearInput
+                pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"
+                required></ion-input>
+            </ion-item>
+          </ion-list>
+          <div class="ion-float-right ion-margin-top">
+            <ion-button id="emailReset" fill="outline" (click)="getPractitionerEmail()" class="ion-margin-end">
+              <ion-icon slot="start" name="refresh"></ion-icon>
+              {{'AGAIN_BUTTON' | translate}}
+            </ion-button>
+            <ion-button type="submit" id="emailSubmit" color="primary" [disabled]="form.invalid || form.pristine">
+              <ion-icon slot="start" name="save"></ion-icon>
+              {{'READY_BUTTON' | translate}}
+            </ion-button>
+          </div>
+        </form>
+      </span>
+    </ion-card>
+  </inc-container>
+</ion-content>

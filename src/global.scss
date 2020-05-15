@@ -1,0 +1,65 @@
+// http://ionicframework.com/docs/theming/
+@import '~@ionic/angular/css/core.css';
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
+@import '~@ionic/angular/css/display.css';
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 768px) {
+  .container {
+      padding-right: 15px;
+      padding-left: 15px;
+      padding-top: 24px;
+  }
+}
+
+@media (min-width: 991px) {
+  .container {
+      width: calc(961px - 230px);
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+      width: calc(1170px - 230px);
+  }
+}
+
+span.required {
+  color: var(--ion-color-danger);
+}
+
+.mat-ink-bar {
+  background-color: var(--ion-color-primary) !important;
+}
+
+textarea {
+  min-height: 111px !important;
+}
+
+.back-btn {
+  text-transform: initial;
+  top: 2px;
+  position: absolute;
+  z-index: 100;
+}
+
+ion-toolbar {
+  --background: var(--ion-color-danger) !important;
+  --color: #ffffff;
+}
+
+.red-color {
+  color: var(--ion-color-danger);
+}

@@ -1,0 +1,23 @@
+<inc-modal-header label="{{title | translate}}"></inc-modal-header>
+<ion-content>
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">{{'NAME' | translate}}
+          <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">{{'DESCRIPTION' | translate}}</ion-label>
+        <ion-textarea rows="5" auto-grow="true" formControlName="description"></ion-textarea>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-text>{{'VISIBILITY' | translate}}</ion-text>
+        <ion-checkbox slot="start" formControlName="isVisible"></ion-checkbox>
+      </ion-item>
+    </ion-list>
+  </form>
+  <inc-modal-footer [formInvalidity]="form.invalid || form.pristine" (result)="$event ? save() : close()">
+  </inc-modal-footer>
+</ion-content>
